@@ -1,15 +1,14 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import { DadosPrograma, EscolhaPrograma, OferteMilhas, PedidoFinalizado } from "../steps";
 
 function AppRoutes() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<></>} />
-        <Route path="/ofertemilhas" element={<></>} />
-        <Route path="/dadosprograma" element={<></>} />
-        <Route path="/pedidofinalizado" element={<></>} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<EscolhaPrograma></EscolhaPrograma>} />
+      <Route path="/oferteMilhas" element={<OferteMilhas></OferteMilhas>} />
+      <Route path="/dadosPrograma" element={<DadosPrograma></DadosPrograma>} />
+      <Route path="/pedidofinalizado" element={<PedidoFinalizado></PedidoFinalizado>} />
+    </Routes>
   )
 }
 
