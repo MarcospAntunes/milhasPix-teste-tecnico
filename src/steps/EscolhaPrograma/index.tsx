@@ -18,7 +18,7 @@ function EscolhaPrograma() {
       <form action="#" onSubmit={(e) => e.preventDefault()}>
         <fieldset>
           <legend><span>01.</span> Escolha o programa de fidelidade</legend>
-          <div className="container">
+          <div className="box">
             <div className="select-wrapper">
               <button><TbRefresh className="blue"/></button>
               <select name="programa" id="programa" onChange={(e) => setCurrentOption(e.currentTarget.value)}>
@@ -31,20 +31,26 @@ function EscolhaPrograma() {
             <img src={`/images/${currentOption}.png`} alt={currentOption} />
           </div>
           <div className="container">
-            <div className="select-wrapper">
-              <select name="produto" id="produto">
-                <option value="liminar">Liminar</option>
-              </select>
+            <label htmlFor="produto">Produto</label>
+            <div className="box">
+              <div className="select-wrapper">
+                <select name="produto" id="produto">
+                  <option value="liminar">Liminar</option>
+                </select>
+              </div>
+              <LuChevronsUpDown className="blue"/>
             </div>
-            <LuChevronsUpDown className="blue"/>
           </div>
-          <div className="container disabled">
-            <div className="select-wrapper">
-              <select name="cpfDisponivel" id="cpfDisponivel" disabled className="disabled">
-                <option value="Ilimitado">Ilimitado</option>
-              </select>
+          <div className="container">
+            <label htmlFor="cpf">CPF's Disponíveis</label>
+            <div className="box disabled">
+              <div className="select-wrapper">
+                <select name="cpfDisponivel" id="cpfDisponivel" disabled className="disabled">
+                  <option value="Ilimitado">Ilimitado</option>
+                </select>
+              </div>
+              <IoLockClosedOutline/>
             </div>
-            <IoLockClosedOutline/>
           </div>
         </fieldset>
         <fieldset>

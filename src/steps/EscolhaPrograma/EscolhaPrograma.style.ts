@@ -65,6 +65,12 @@ const EscolhaProgramaStyled = styled.section`
     }
   }
 
+  label {
+    width: 85%;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
   .disabled {
     background-color: #F9F9F9;
 
@@ -74,6 +80,15 @@ const EscolhaProgramaStyled = styled.section`
   }
 
   .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .box {
     display: flex;
     justify-content: space-between;
     align-items: center;
