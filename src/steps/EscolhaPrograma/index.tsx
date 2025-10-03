@@ -44,7 +44,7 @@ function EscolhaPrograma() {
                 <option value="Ilimitado">Ilimitado</option>
               </select>
             </div>
-            <IoLockClosedOutline className="blue"/>
+            <IoLockClosedOutline/>
           </div>
         </fieldset>
         <fieldset>
