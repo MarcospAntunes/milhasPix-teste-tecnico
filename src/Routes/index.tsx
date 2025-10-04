@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { DadosPrograma, EscolhaPrograma, OferteMilhas, PedidoFinalizado } from "../steps";
+import { DadosPrograma, EscolhaPrograma, MinhasOfertas, OferteMilhas, PedidoFinalizado } from "../steps";
 
 function AppRoutes() {
   return (
@@ -8,6 +8,7 @@ function AppRoutes() {
       <Route path="/oferteMilhas" element={<OferteMilhas></OferteMilhas>} />
       <Route path="/dadosPrograma" element={<DadosPrograma></DadosPrograma>} />
       <Route path="/pedidofinalizado" element={<PedidoFinalizado></PedidoFinalizado>} />
+      <Route path="/minhasOfertas" element={<MinhasOfertas></MinhasOfertas>} />
     </Routes>
   )
 }

@@ -4,4 +4,10 @@ async function apiRanking(value: string = "0") {
   return res;
 }
 
-export {apiRanking};
+async function apiSimulateOffers() {
+  const req = await fetch(`http://localhost:3000/api/simulate-offers-list`);
+  const res = await req.json();
+  return res;
+}
+
+export {apiRanking, apiSimulateOffers};

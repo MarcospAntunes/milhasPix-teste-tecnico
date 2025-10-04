@@ -7,6 +7,7 @@ const PedidoFinalizadoStyled = styled.section`
   align-items: center;
   gap: 16px;
   padding: 16px;
+  height: 100%;
 
   img {
     width: 60px;

@@ -13,10 +13,11 @@ const FooterMobileStyled = styled.footer`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
+    min-width: 40px;
     height: 40px;
     background-color: transparent;
     padding: 0;
+    font-size: 14px;
     color: black;
     
     border-radius: 100%;
