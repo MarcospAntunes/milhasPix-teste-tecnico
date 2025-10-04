@@ -1,7 +1,7 @@
 import useCurrentStep from "./useCurrentStep";
-import useFormError from "./useFormError";
+import useFormData from "./useFormError";
 
 export {
   useCurrentStep,
-  useFormError
+  useFormData
 }

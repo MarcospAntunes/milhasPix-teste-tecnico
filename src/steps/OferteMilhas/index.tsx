@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
-import { useCurrentStep, useFormError } from "../../hooks";
+import { useCurrentStep, useFormData } from "../../hooks";
 import EscolhaProgramaStyled from "./OferteMilhas.style";
 import { GoPlus } from "react-icons/go";
 import { PiAirplaneInFlightLight } from "react-icons/pi";
@@ -10,9 +10,7 @@ import { apiRanking } from "../../services/api";
 
 function OferteMilhas() {
   const { setStep }: any = useCurrentStep();
-  const [selectedOption, setSelectedOption] = useState("imediato");
-  const {error, setError}: any = useFormError();
-  const [value, setValue] = useState("");
+  const {error, setError, prazoReceber, setPrazoReceber, valorMilha, setValorMilha}: any = useFormData();
   const [data, setData] = useState<[object]>([{}]);
 
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,9 +21,9 @@ function OferteMilhas() {
       maximumFractionDigits: 2,
     });
 
-    setValue(formatted);
+    setValorMilha(formatted);
     
-    if(numberValue < 14 || numberValue > 16.5) {
+    if(numberValue < 14 || numberValue > 16.56) {
       setError(true)
       setData(await apiRanking(numberValue.toString()));
     } else {
@@ -55,8 +53,8 @@ function OferteMilhas() {
                     type="radio"
                     name="receber"
                     value={opcao.value}
-                    checked={selectedOption === opcao.value}
-                    onChange={() => setSelectedOption(opcao.value)}
+                    checked={prazoReceber === opcao.value}
+                    onChange={() => setPrazoReceber(opcao.value)}
                   />
                   <span>{opcao.label}</span>
                 </label>
@@ -76,13 +74,13 @@ function OferteMilhas() {
               <input 
                 type="text"
                 inputMode="numeric"
-                value={value}
+                value={valorMilha}
                 onChange={(e) => handleChange(e)} 
               />
               {error ? (
-                Number(value.replace(",", ".")) < 14 ? (
+                Number(valorMilha.replace(",", ".")) < 14 ? (
                   <RiArrowUpDoubleFill className="red" />
-                ) : Number(value.replace(",", ".")) > 16.5 ? (
+                ) : Number(valorMilha.replace(",", ".")) > 16.56 ? (
                   <RiArrowDownDoubleFill className="red" />
                 ) : (
                   <IoCheckmark className="blue" />

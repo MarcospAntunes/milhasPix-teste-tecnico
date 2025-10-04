@@ -2,13 +2,13 @@
 
 import FooterMobileStyled from "./FooterMobile.styled";
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
-import { useCurrentStep, useFormError } from "../../hooks";
+import { useCurrentStep, useFormData } from "../../hooks";
 import { routes } from "../../constants";
 import { useNavigate } from "react-router-dom";
 
 function FooterMobile() {
   const { step,  maxSteps}: any = useCurrentStep();
-  const { error }: any = useFormError();
+  const { error }: any = useFormData();
   const navigate = useNavigate();
 
   const nextStep = () => {

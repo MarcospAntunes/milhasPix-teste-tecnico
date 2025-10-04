@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from "react";
-import { useCurrentStep } from "../../hooks";
+import { useCurrentStep, useFormData } from "../../hooks";
 import EscolhaProgramaStyled from "./EscolhaPrograma.style";
 import { TbRefresh } from "react-icons/tb";
 import { LuChevronsUpDown } from "react-icons/lu";
@@ -10,7 +9,7 @@ import { LuMinus } from "react-icons/lu";
 
 function EscolhaPrograma() {
   const { setStep }: any = useCurrentStep();
-  const [currentOption, setCurrentOption] = useState("TudoAzul");
+  const { programa, setPrograma }: any = useFormData();
   
   setStep(1)
   return(
@@ -21,14 +20,14 @@ function EscolhaPrograma() {
           <div className="box">
             <div className="select-wrapper">
               <button><TbRefresh className="blue"/></button>
-              <select name="programa" id="programa" onChange={(e) => setCurrentOption(e.currentTarget.value)}>
+              <select name="programa" id="programa" onChange={(e) => setPrograma(e.currentTarget.value)}>
                 <option value="TudoAzul">Tudo azul</option>
                 <option value="Smiles">Smiles</option>
                 <option value="LatamPass">LATAM PASS</option>
                 <option value="AirPortugal">AIR PORTUGAL</option>
               </select>
             </div>
-            <img src={`/images/${currentOption}.png`} alt={currentOption} />
+            <img src={`/images/${programa}.png`} alt={programa} />
           </div>
           <div className="container">
             <label htmlFor="produto">Produto</label>

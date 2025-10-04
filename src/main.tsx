@@ -5,19 +5,19 @@ import AppRoutes from './Routes/index.tsx'
 import GlobalStyles from './GlobalStyles.ts'
 import { CurrentStepProvider } from './context/CurrentStepContext/index.tsx'
 import { BrowserRouter } from 'react-router-dom'
-import { FormErrorProvider } from './context/FormErrorContext/index.tsx'
+import { FormDataProvider } from './context/FormDataContext/index.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <GlobalStyles />
-    <CurrentStepProvider>
-      <FormErrorProvider>
+    <FormDataProvider>
+      <CurrentStepProvider>
         <BrowserRouter>
           <AppContainer>
             <AppRoutes />
           </AppContainer>
         </BrowserRouter>
-      </FormErrorProvider>
-    </CurrentStepProvider>
+      </CurrentStepProvider>
+    </FormDataProvider>
   </StrictMode>,
 )

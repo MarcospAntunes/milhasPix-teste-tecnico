@@ -1,7 +1,7 @@
 import { CurrentStepContext } from "./CurrentStepContext";
-import { FormErrorContext } from "./FormErrorContext";
+import { FormDataContext } from "./FormDataContext";
 
 export {
   CurrentStepContext,
-  FormErrorContext
+  FormDataContext
 }
