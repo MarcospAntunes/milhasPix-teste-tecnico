@@ -15,6 +15,9 @@ const FooterMobileStyled = styled.footer`
     align-items: center;
     width: 40px;
     height: 40px;
+    background-color: transparent;
+    padding: 0;
+    color: black;
     
     border-radius: 100%;
     border: 1px solid #E2E2E2;

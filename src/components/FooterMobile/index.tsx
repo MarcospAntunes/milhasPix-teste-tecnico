@@ -1,12 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import FooterMobileStyled from "./FooterMobile.styled";
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
-import { useCurrentStep } from "../../hooks";
+import { useCurrentStep, useFormError } from "../../hooks";
 import { routes } from "../../constants";
 import { useNavigate } from "react-router-dom";
 
 function FooterMobile() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { step,  maxSteps}: any = useCurrentStep();
+  const { error }: any = useFormError();
   const navigate = useNavigate();
 
   const nextStep = () => {
@@ -27,11 +29,11 @@ function FooterMobile() {
 
   return(
     <FooterMobileStyled>
-      <span id="backButton" onClick={() => backStep()}>
+      <button id="backButton" onClick={() => backStep()} disabled={error}>
         <IoIosArrowRoundBack />
-      </span>
+      </button>
       <p><span>{step}</span> de {maxSteps}</p>
-      <button onClick={() => nextStep()}>{step < maxSteps ? "Prosseguir" : "Ver minhas ofertas"} <IoIosArrowRoundForward /></button>
+      <button onClick={() => nextStep()} disabled={error}>{step < maxSteps ? "Prosseguir" : "Ver minhas ofertas"} <IoIosArrowRoundForward /></button>
     </FooterMobileStyled>
   )
 }
