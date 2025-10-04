@@ -12,6 +12,7 @@ function OferteMilhas() {
   const { setStep }: any = useCurrentStep();
   const {error, setError, prazoReceber, setPrazoReceber, valorMilha, setValorMilha}: any = useFormData();
   const [data, setData] = useState<[object]>([{}]);
+  const [checked, setChecked] = useState(false);
 
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const onlyDigits = Number(e.target.value.replace(/\D/g, ""));
@@ -106,6 +107,21 @@ function OferteMilhas() {
                 );
               })}
             </div>
+            <div id="mediaMilhas">
+              <label className="toggle">
+                <input type="checkbox" onChange={(e) => setChecked(e.target.checked)} />
+                <span className="slider"></span>
+              </label> 
+              Definir média de milhas por passageiro
+            </div>
+            {checked && 
+            <>
+              <div className="box">
+                {10000}
+              </div>
+              <p id="green">Melhor média para a sua oferta: <span>27.800</span></p>
+            </>}
+            
           </div>
         </fieldset>
         <fieldset>

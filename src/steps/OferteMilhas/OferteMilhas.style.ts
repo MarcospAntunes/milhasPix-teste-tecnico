@@ -125,7 +125,19 @@ const EscolhaProgramaStyled = styled.section`
       height: 32px;
       border-radius: 40px;
     }
+
+    
   }
+
+  #green {
+      font-size: 14px;
+      color: #12A19A;
+      width: 85%;
+      
+      span {
+        font-weight: 700;
+      }
+    }
 
   .opcoes {
       display: flex;
@@ -222,6 +234,58 @@ const EscolhaProgramaStyled = styled.section`
     background-color: #12A19A1A;
     border-color: #12A19A;
   }
+
+  #mediaMilhas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 298px;
+  }
+
+  .toggle {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: background-color 0.3s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+/* Quando estiver marcado */
+.toggle input:checked + .slider {
+  background-color: #2196F3; /* azul */
+}
+
+.toggle input:checked + .slider::before {
+  transform: translateX(15px);
+}
+
 `;
 
 
