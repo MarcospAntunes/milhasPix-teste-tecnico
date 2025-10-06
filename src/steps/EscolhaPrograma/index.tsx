@@ -62,6 +62,10 @@ function EscolhaPrograma() {
           </legend>
         </fieldset>
       </form>
+      <div className="selecionePrograma">
+        <h4>Selecione o programa</h4>
+        <p>Escolha de qual programa de fidelidade você quer vender suas milhas. Use apenas contas em seu nome.</p>
+      </div>
     </EscolhaProgramaStyled>
   )
 

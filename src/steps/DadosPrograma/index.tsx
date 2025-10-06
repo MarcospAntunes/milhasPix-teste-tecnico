@@ -6,6 +6,7 @@ import { BsPersonCircle } from "react-icons/bs";
 import { LuMinus } from "react-icons/lu";
 import { RiWhatsappFill } from "react-icons/ri";
 import { GiBrazilFlag } from "react-icons/gi";
+import CurrentStepStatusStyled from "../../components/currentStepStatus/CurrentStepStatus.style";
 
 function DadosPrograma() {
   const { setStep }: any = useCurrentStep();
@@ -48,6 +49,7 @@ function DadosPrograma() {
   setStep(3)
   return(
     <DadosProgramaStyled>
+      <CurrentStepStatusStyled />
       <form action="#" onSubmit={(e) => e.preventDefault()}>
         <fieldset>
           <legend id="title">

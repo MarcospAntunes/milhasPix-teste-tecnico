@@ -55,6 +55,10 @@ const FooterMobileStyled = styled.footer`
       height: 24px;
     }
   }
+
+  @media screen and (min-width: 541px) {
+    display: none;
+  }
 `;
 
 export default FooterMobileStyled;
