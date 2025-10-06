@@ -1,11 +1,11 @@
 async function apiRanking(value: string = "0") {
-  const req = await fetch(`http://localhost:3000/api/simulate-ranking?mile_value=${value}`);
+  const req = await fetch(`/vercel/simulate-ranking?mile_value=${value}`);
   const res = await req.json();
   return res;
 }
 
 async function apiSimulateOffers() {
-  const req = await fetch(`http://localhost:3000/api/simulate-offers-list`);
+  const req = await fetch(`/vercel/simulate-offers-list`);
   const res = await req.json();
   return res;
 }
