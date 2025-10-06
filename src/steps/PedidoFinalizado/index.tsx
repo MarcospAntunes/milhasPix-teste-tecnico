@@ -8,7 +8,7 @@ function PedidoFinalizado() {
   setStep(4)
   return(
     <PedidoFinalizadoStyled>
-      <img src="/public/images/success.png" alt="Sucesso" />
+      <img src="/images/success.png" alt="Sucesso" />
       <h2>Ordem de venda criada com sucesso!</h2>
       <p>
         Agora é so aguardar - assim que suas milhas forem vendidas, o valor 

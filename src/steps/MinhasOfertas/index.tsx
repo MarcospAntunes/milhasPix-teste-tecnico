@@ -61,7 +61,7 @@ function MinhasOfertas() {
         {data?.length > 0 && data.map(({accountLogin, availableQuantity, createdAt, loyaltyProgram, offerId, offerStatus, offerType}: any) => (
           <div key={offerId} className="card">
             <div id="header">
-              <img src={`public/loyaltyProgramIcons/${loyaltyProgram}.png`} alt={loyaltyProgram} />
+              <img src={`/loyaltyProgramIcons/${loyaltyProgram}.png`} alt={loyaltyProgram} />
               <p><span id={loyaltyProgram}>{loyaltyProgram}</span> {offerType}</p>
               <div>
                 <p className="status" id={offerStatus?.replace(" ", "")}>
