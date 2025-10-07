@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const EscolhaProgramaStyled = styled.section`
+const OferteMilhasStyled = styled.section`
   form {
     display: flex;
     flex-direction: column;
@@ -9,6 +9,10 @@ const EscolhaProgramaStyled = styled.section`
     border-top: none;
     border-radius: 8px;
     padding: 0px 0px 10px 0px;
+  }
+
+  .errorTitleContainer {
+    display: none;
   }
 
   fieldset {
@@ -277,26 +281,72 @@ const EscolhaProgramaStyled = styled.section`
     transition: transform 0.3s;
   }
 
-  /* Quando estiver marcado */
   .toggle input:checked + .slider {
-    background-color: #2196F3; /* azul */
+    background-color: #2196F3;
   }
 
   .toggle input:checked + .slider::before {
     transform: translateX(15px);
   }
 
+  .milhas {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .mediaMilhasDestkop, #mediaMilhasDesktopButton {
+    display: none;
+  }
+
   @media screen and (min-width: 541px) {
     form {
-      flex-direction: row;
       flex-wrap: wrap;
-      max-height: 230px;
+      max-width: 640px;
+      height: 480px;  
+        
 
       fieldset {
         flex-direction: row;
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
+      }
+
+      .titleMobile {
+        display: none;
+      }
+
+      .errorTitleContainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+
+      .errorTitleContainer p:first-of-type {
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      .errorTitleContainer .messageError {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        width: auto;
+        border-radius: 40px;
+        padding: 0px 16px 0px 16px;
+        height: 30px;
+        background-color: #DC2B2B1A;
+
+        span {
+          color: #DC2B2B;
+          font-weight: 700;
+        }
       }
 
       fieldset:nth-of-type(2), fieldset:nth-of-type(3) {
@@ -307,9 +357,52 @@ const EscolhaProgramaStyled = styled.section`
         max-width: 300px;
       }
     }
+
+    .messageError {
+      display: none;
+    }
+
+    .milhas {
+      flex-direction: row;
+    }
+
+    #mediaMilhas {
+      display: none;
+    }
+
+    #mediaMilhasDestkopButton {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 12px;
+      width: 85%;
+    }
+
+    .mediaMilhasDestkop {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 11px;
+      
+      height: 44px;
+      border: 1px solid #E2E2E2;
+      border-radius: 44px;
+      padding: 10px 16px;
+      }
+
+      #mediaMilhasDestkopContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+      }
+
+    .mediaMilhasMobile {
+      display: none !important;
+    }
   }
 
 `;
 
 
-export default EscolhaProgramaStyled;
+export default OferteMilhasStyled;

@@ -29,6 +29,24 @@ function EscolhaPrograma() {
             </div>
             <img src={`/images/${programa}.png`} alt={programa} />
           </div>
+          <div className="box">
+            <label className="choiceButton">
+              <input type="radio" name="programa" value="TudoAzul"/>
+              <img src="/images/TudoAzul.png" alt="TudoAzul" />
+            </label>
+            <label className="choiceButton">
+              <input type="radio" name="programa" value="Smiles"/>
+              <img src="/images/Smiles.png" alt="Smiles" />
+            </label>
+            <label className="choiceButton">
+              <input type="radio" name="programa" value="LatamPass"/>
+              <img src="/images/LatamPass.png" alt="LatamPass" />
+            </label>
+            <label className="choiceButton">
+              <input type="radio" name="programa" value="AirPortugal"/>
+              <img src="/images/AirPortugal.png" alt="AirPortugal" />
+            </label>
+          </div>
           <div className="container">
             <label htmlFor="produto">Produto</label>
             <div className="box">

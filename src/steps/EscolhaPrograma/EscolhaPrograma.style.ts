@@ -123,6 +123,7 @@ const EscolhaProgramaStyled = styled.section`
       justify-content: center;
       align-items: center;
       gap: 10px;
+      width: 100%;
 
       select {
         appearance: none;
@@ -130,6 +131,7 @@ const EscolhaProgramaStyled = styled.section`
         -moz-appearance: none;
         border: none;
         border-radius: 6px;
+        width: 100%;
 
         &:focus {
           outline: none;
@@ -149,11 +151,15 @@ const EscolhaProgramaStyled = styled.section`
     color: #1E90FF !important;
   }
 
+  .choiceButton {
+    display: none;
+  }
+
   @media screen and (min-width: 541px) {
     form {
       flex-direction: row;
       flex-wrap: wrap;
-      max-height: 230px;
+      height: auto;
 
       fieldset {
         flex-direction: row;
@@ -175,7 +181,7 @@ const EscolhaProgramaStyled = styled.section`
       display: flex;
       flex-direction: column;
       gap: 16px;
-      border: 1px solid #E2E2E2;
+      border: 1px solid #F0F0F0;
       max-width: 248px;
       max-height: 120px;
       border-radius: 8px;
@@ -185,6 +191,55 @@ const EscolhaProgramaStyled = styled.section`
         font-size: 12px;
         color: #475569;
       }
+    }
+
+    .box:nth-of-type(2) {
+      border: none;
+    }
+
+    .choiceButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 143px;
+    height: 44px;
+    padding: 12px 8px;
+    border-radius: 56px;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+    background-color: #f9f9f9;
+    border: 2px solid transparent;
+  }
+
+   .choiceButton img {
+      width: 61px;
+      height: 26px;
+   }
+
+   .choiceButton:last-of-type img:last-of-type {
+    width: 99px;
+    height: 18px;
+   }
+
+  .choiceButton input {
+    display: none;
+  }
+
+  .choiceButton input:checked{
+    border: 2px solid #1E90FF;
+    border-radius: 56px;
+    padding: 4px;
+  }
+
+  .choiceButton:has(input:checked) {
+    border: 2px solid #1E90FF;
+  }
+
+
+    fieldset:first-of-type > .box:first-of-type {
+      display: none;
     }
   }
 `;

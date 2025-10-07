@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { useCurrentStep, useFormData } from "../../hooks";
-import EscolhaProgramaStyled from "./OferteMilhas.style";
 import { GoPlus } from "react-icons/go";
 import { PiAirplaneInFlightLight } from "react-icons/pi";
 import { RiArrowDownDoubleFill, RiArrowUpDoubleFill } from "react-icons/ri";
 import { IoCheckmark } from "react-icons/io5";
 import { apiRanking } from "../../services/api";
+import OferteMilhasStyled from "./OferteMilhas.style";
 
 function OferteMilhas() {
   const { setStep }: any = useCurrentStep();
@@ -42,10 +42,18 @@ function OferteMilhas() {
   
   setStep(2)
   return(
-    <EscolhaProgramaStyled>
+    <OferteMilhasStyled>
       <form action="#" onSubmit={(e) => e.preventDefault()}>
         <fieldset>
-          <legend><span>02.</span> Oferte suas milhas</legend>
+          <legend className="errorTitleContainer">
+            <p><span>02.</span> Oferte suas milhas</p>
+            {error ? 
+              <p className="messageError">Escolha entre <span>R$ 14,00</span> e <span>R$ 16,56</span></p> 
+              : 
+              <></>
+            }
+          </legend>      
+          <legend className="titleMobile"><span>02.</span> Oferte suas milhas</legend>
           <label htmlFor="receber" id="receber">Quero receber</label>
             <div className="opcoes">
               {options.map((opcao) => (
@@ -61,68 +69,84 @@ function OferteMilhas() {
                 </label>
                ))}
             </div>
-          <div className="container">
-            <label htmlFor="produto">Milhas ofertadas</label>
-            <div className="box">
-              <input type="number" value={10000} />
-              <PiAirplaneInFlightLight className="blue" />
+          <div className="milhas">
+            <div className="container">
+              <label htmlFor="produto">Milhas ofertadas</label>
+              <div className="box">
+                <input type="number" value={10000} />
+                <PiAirplaneInFlightLight className="blue" />
+              </div>
             </div>
-          </div>
-          <div className="container">
-            <label htmlFor="valor">Valor a cada 1.000 milhas</label>
-            <div className={error ? "box error" : "box"}>
-              <span>R$</span>
-              <input 
-                type="text"
-                inputMode="numeric"
-                value={valorMilha}
-                onChange={(e) => handleChange(e)} 
-              />
-              {error ? (
-                Number(valorMilha.replace(",", ".")) < 14 ? (
-                  <RiArrowUpDoubleFill className="red" />
-                ) : Number(valorMilha.replace(",", ".")) > 16.56 ? (
-                  <RiArrowDownDoubleFill className="red" />
+            <div className="container">
+              <label htmlFor="valor">Valor a cada 1.000 milhas</label>
+              <div className={error ? "box error" : "box"}>
+                <span>R$</span>
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  value={valorMilha}
+                  onChange={(e) => handleChange(e)}
+                />
+                {error ? (
+                  Number(valorMilha.replace(",", ".")) < 14 ? (
+                    <RiArrowUpDoubleFill className="red" />
+                  ) : Number(valorMilha.replace(",", ".")) > 16.56 ? (
+                    <RiArrowDownDoubleFill className="red" />
+                  ) : (
+                    <IoCheckmark className="blue" />
+                  )
                 ) : (
                   <IoCheckmark className="blue" />
-                )
-              ) : (
-                <IoCheckmark className="blue" />
-              )}
-            </div>
-            {error ? 
-              <p className="messageError">Escolha entre <span>R$ 14,00</span> e <span>R$ 16,56</span></p> 
-              : 
-              <></>
-            }
-            <div className="rankingContainer">
-             {data.length > 0 && data?.map(({ description, mile_value, position }: any) => {
-                const numericValue = mile_value ? Number(mile_value) : 0;
-                const checkPostion = (description || "").includes("essa será sua posição") ? "ranking you" : "ranking"
-                if (numericValue <= 0) return null;
-                return (
-                  <p key={position} className={checkPostion}>
-                    {checkPostion == "ranking you" ? `Você ${position}° R$ ${(numericValue * 1.025).toFixed(2)}` : `${position}° R$ ${(numericValue * 1.025).toFixed(2)}`}
-                  </p>
-                );
-              })}
-            </div>
-            <div id="mediaMilhas">
-              <label className="toggle">
-                <input type="checkbox" onChange={(e) => setChecked(e.target.checked)} />
-                <span className="slider"></span>
-              </label> 
-              Definir média de milhas por passageiro
-            </div>
-            {checked && 
-            <>
-              <div className="box">
-                {10000}
+                )}
               </div>
-              <p id="green">Melhor média para a sua oferta: <span>27.800</span></p>
-            </>}
+              {error ?
+                <p className="messageError">Escolha entre <span>R$ 14,00</span> e <span>R$ 16,56</span></p>
+                :
+                <></>
+              }
+              <div className="rankingContainer">
+               {data.length > 0 && data?.map(({ description, mile_value, position }: any) => {
+                  const numericValue = mile_value ? Number(mile_value) : 0;
+                  const checkPostion = (description || "").includes("essa será sua posição") ? "ranking you" : "ranking"
+                  if (numericValue <= 0) return null;
+                  return (
+                    <p key={position} className={checkPostion}>
+                      {checkPostion == "ranking you" ? `Você ${position}° R$ ${(numericValue * 1.025).toFixed(2)}` : `${position}° R$ ${(numericValue * 1.025).toFixed(2)}`}
+                    </p>
+                  );
+                })}
+              </div>
+              <div id="mediaMilhas">
+                <label className="toggle">
+                  <input type="checkbox" onChange={(e) => setChecked(e.target.checked)} />
+                  <span className="slider"></span>
+                </label>
+                Definir média de milhas por passageiro
+              </div>
+              {checked &&
+              <>
+                <div className="box mediaMilhasMobile">
+                  {10000}
+                </div>
+                <p id="green" className="mediaMilhasMobile">Melhor média para a sua oferta: <span>27.800</span></p>
+              </>}
             
+            </div>
           </div>
+          <div id="mediaMilhasDestkopButton">
+                <label className="toggle">
+                  <input type="checkbox" onChange={(e) => setChecked(e.target.checked)} />
+                  <span className="slider"></span>
+                </label>
+                Definir média de milhas por passageiro
+              </div>
+              {checked &&
+              <div id="mediaMilhasDestkopContainer">
+                <div className="mediaMilhasDestkop">
+                  {10000}
+                </div>
+                <p id="green">Melhor média para a sua oferta: <span>27.800</span></p>
+              </div>}
         </fieldset>
         <fieldset>
           <legend>
@@ -131,7 +155,7 @@ function OferteMilhas() {
           </legend>
         </fieldset>
       </form>
-    </EscolhaProgramaStyled>
+    </OferteMilhasStyled>
   )
 
 }
